@@ -1,0 +1,45 @@
+﻿@model BusinessPartnerManagementSystem.WebUI.Models.Partner
+
+<div class="modal fade" id="DetailPartner-@Model.Id" aria-labelledby="PartnerDetailsModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addPartnerLabel">Partner Details</h5>
+                <button>
+                    <span aria-hidden="true" id="hideModal" >X</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <d1 class="row">
+                    <dt class="col-sm-3">
+                        @Html.DisplayFor(model => model.FirstName)
+                    </dt>
+                    <dt class="col-sm-3">
+                        @Html.DisplayNameFor(model => model.LastName)
+                    </dt>
+                    <dt class="col-sm-3">
+                        @Html.DisplayNameFor(model => model.Address)
+                    </dt>
+                    <dt class="col-sm-3">
+                        @Html.DisplayNameFor(model => model.PartnerNumber)
+                    </dt>
+                    <dt class="col-sm-3">
+                        @Html.DisplayNameFor(model => model.CroatianPIN)
+                    </dt>
+                    <dt class="col-sm-3">
+                        @Html.DisplayNameFor(model => model.CreatedAtUtc)
+                    </dt>
+                    <dt class="col-sm-3">
+                        @Html.DisplayNameFor(model => model.CreateByUser)
+                    </dt>
+                    <dt class="col-sm-3">
+                        @Html.DisplayNameFor(model => model.IsForeign)
+                    </dt>
+                    <dt class="col-sm-3">
+                        @Html.DisplayNameFor(model => model.ExternalCode)
+                    </dt>
+                </d1>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,29 @@
+﻿@model IEnumerable<BusinessPartnerManagementSystem.WebUI.Models.Policy>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th>Policy Number</th>
+            <th>Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PolicyNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PolicyPrice)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
