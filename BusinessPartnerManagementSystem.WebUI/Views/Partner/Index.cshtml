@@ -1,0 +1,74 @@
+﻿@model IEnumerable<BusinessPartnerManagementSystem.WebUI.ViewModels.PartnerListItem>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="row">
+    <div class="col-md-3">
+        <i style="font-size:28px"> @Html.ActionLink("+ Create Partner", "Create")</i>
+    </div>
+    <div class="col-md-3">
+        <i style="font-size:28px"> @Html.ActionLink("+ Create Policy", "Create", "Policy")</i>
+    </div>
+    <div class="col-md-3">
+        <i style="font-size:28px"> @Html.ActionLink("View Policies", "Index", "Policy")</i>
+    </div>
+</div>
+
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th>FullName</th>
+            <th>Partner Number</th>
+            <th>Croatian PIN</th>
+            <th>Partner Type Id</th>
+            <th>CreatedAtUtc</th>
+            <th>IsForeign</th>
+            <th>Gender</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+         {
+            <tr>
+                <td>
+                    @*Partner is created in the last 5 minutes*@
+                    @if ((item.Partner.CreatedAt + new TimeSpan(0, 5, 0)) > DateTime.Now)
+                    {
+                        <p>NEW </p>
+                    }
+                    @if (item.HasFiveOrMorePolicies)
+                    {
+                        <p>*</p>
+                    }
+                    @Html.DisplayFor(modelItem => item.Partner.FirstName + " " + item.Partner.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Partner.PartnerNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Partner.CroatianPIN)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Partner.PartnerTypeId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Partner.CreatedAtUtc)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Partner.IsForeign)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Partner.Gender)
+                </td>
+                <td>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="@("DetailPartner-"+item.Partner.Id)" data-url="@Url.Action($"Details/{item.Partner.Id}")">Details</button>
+                </td>
+                <td>
+                    <button type="button">Add Policy</button>
+                </td>
+            </tr>
+         }
+    </tbody>
+</table> 
